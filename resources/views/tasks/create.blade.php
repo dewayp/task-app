@@ -18,7 +18,7 @@
         </ul>
         @endif
     </div>
-    <form method="post" action="{{route('task.store');}}">
+    <form method="post" action="{{route('tasks.store');}}">
         @csrf
         @method('post')
         <div>

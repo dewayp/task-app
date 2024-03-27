@@ -18,23 +18,23 @@
         </ul>
         @endif
     </div>
-    <form method="post" action="{{route('task.store');}}">
+    <form method="post" action="{{route('tasks.update', ['task' => $task])}}">
         @csrf
-        @method('post')
+        @method('put')
         <div>
             <label>Name</label>
-            <input type="text" name="name" placeholder="name">
+            <input type="text" name="name" placeholder="name" value="{{$task->name}}">
         </div>
         <div>
             <label>Description</label>
-            <input type="text" name="description" placeholder="description">
+            <input type="text" name="description" placeholder="description" value="{{$task->description}}">
         </div>
         <div>
             <label>Deadline</label>
-            <input type="date" name="deadline" placeholder="Deadline">
+            <input type="date" name="deadline" placeholder="Deadline" value="{{$task->deadline}}">
         </div>
         <div>
-            <input type="submit" value="Save a new Task">
+            <input type="submit" value="Update Task">
         </div>
     </form>
 </body>

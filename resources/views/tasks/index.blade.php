@@ -10,6 +10,16 @@
 <body>
     <h1>Task</h1>
     <div>
+        @if(session()->has('success'))
+        <div>
+            {{session('success')}}
+        </div>
+        @endif
+    </div>
+    <div>
+        <div>
+            <a href="{{route('tasks.create')}}">Add</a>
+        </div>
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -17,6 +27,7 @@
                 <th>Description</th>
                 <th>Deadline</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             @forelse($tasks as $task)
             <tr>
@@ -26,6 +37,13 @@
                 <td>{{ $task->deadline }}</td>
                 <td>
                     <a href="{{route('tasks.edit', ['task' => $task])}}">Edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{route('tasks.delete', ['task' => $task])}}">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="Delete">
+                    </form>
                 </td>
 
             </tr>
