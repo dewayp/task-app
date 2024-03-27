@@ -36,8 +36,13 @@
                 <td>{{ $task->description }}</td>
                 <td>{{ $task->deadline }}</td>
                 <td>
-                    <a href="{{route('tasks.edit', ['task' => $task])}}">Edit</a>
+                    <form method="post" action="{{route('tasks.edit', ['task' => $task])}}">
+                        @csrf
+                        @method('post')
+                        <button type="submit">Edit</button>
+                    </form>
                 </td>
+
                 <td>
                     <form method="post" action="{{route('tasks.delete', ['task' => $task])}}">
                         @csrf

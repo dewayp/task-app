@@ -44,7 +44,7 @@ class TaskController extends Controller
 
         $task->update($data);
 
-        return redirect(route('tasks.index'))->with('success', 'Task Update Succesfully');
+        return redirect(route('dashboard'))->with('success', 'Task Update Succesfully');
     }
 
     public function delete(Task $task)
